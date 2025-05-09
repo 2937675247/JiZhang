@@ -1,0 +1,505 @@
+D:\Desktop\jizhang1\app\src\main\AndroidManifest.xml:13: Warning: The Google Play store has a policy that limits usage of MANAGE_EXTERNAL_STORAGE [ScopedStorage]
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ScopedStorage":
+   Scoped storage is enforced on Android 10+ (or Android 11+ if using
+   requestLegacyExternalStorage). In particular, WRITE_EXTERNAL_STORAGE will
+   no longer provide write access to all files; it will provide the equivalent
+   of READ_EXTERNAL_STORAGE instead.
+
+   As of Android 13, if you need to query or interact with MediaStore or media
+   files on the shared storage, you should be using instead one or more new
+   storage permissions:
+   * android.permission.READ_MEDIA_IMAGES
+   * android.permission.READ_MEDIA_VIDEO
+   * android.permission.READ_MEDIA_AUDIO
+
+   and then add maxSdkVersion="33" to the older permission. See the developer
+   guide for how to do this:
+   https://developer.android.com/about/versions/13/behavior-changes-13#granula
+   r-media-permissions
+
+   The MANAGE_EXTERNAL_STORAGE permission can be used to manage all files, but
+   it is rarely necessary and most apps on Google Play are not allowed to use
+   it. Most apps should instead migrate to use scoped storage. To modify or
+   delete files, apps should request write access from the user as described
+   at https://goo.gle/android-mediastore-createwriterequest.
+
+   To learn more, read these resources: Play policy:
+   https://goo.gle/policy-storage-help Allowable use cases:
+   https://goo.gle/policy-storage-usecases
+
+   https://goo.gle/android-storage-usecases
+
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\stats\StatsActivity.java:307: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                labels.add(String.format("%d:00", i));
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\stats\StatsActivity.java:311: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                labels.add(String.format("%d/%d", tempCal.get(Calendar.MONTH) + 1, tempCal.get(Calendar.DAY_OF_MONTH)));
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\stats\StatsActivity.java:315: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+                labels.add(String.format("%d/%d", tempCal.get(Calendar.MONTH) + 1, tempCal.get(Calendar.DAY_OF_MONTH)));
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "DefaultLocale":
+   Calling String#toLowerCase() or #toUpperCase() without specifying an
+   explicit locale is a common source of bugs. The reason for that is that
+   those methods will use the current locale on the user's device, and even
+   though the code appears to work correctly when you are developing the app,
+   it will fail in some locales. For example, in the Turkish locale, the
+   uppercase replacement for i is not I.
+
+   If you want the methods to just perform ASCII replacement, for example to
+   convert an enum name, call String#toUpperCase(Locale.US) instead. If you
+   really want to use the current locale, call
+   String#toUpperCase(Locale.getDefault()) instead.
+
+   https://developer.android.com/reference/java/util/Locale.html#default_locale
+
+D:\Desktop\jizhang1\app\build.gradle:12: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk 33
+        ~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\settings\SettingsActivity.java:59: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialCode from androidx.appcompat]
+    private Switch mSwitchDarkMode;
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseSwitchCompatOrMaterialCode":
+   Use SwitchCompat from AppCompat or SwitchMaterial from Material library
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.appcompat
+   Feedback: https://issuetracker.google.com/issues/new?component=460343
+
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_settings.xml:52: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialXml from androidx.appcompat]
+                    <Switch
+                    ^
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_settings.xml:59: Warning: Use SwitchCompat from AppCompat or SwitchMaterial from Material library [UseSwitchCompatOrMaterialXml from androidx.appcompat]
+                    <Switch
+                    ^
+
+   Explanation for issues of type "UseSwitchCompatOrMaterialXml":
+   Use SwitchCompat from AppCompat or SwitchMaterial from Material library
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.appcompat
+   Feedback: https://issuetracker.google.com/issues/new?component=460343
+
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\expense\CategoryAdapter.java:56: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged();
+        ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\expense\CategoryAdapter.java:61: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged();
+        ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\stats\CategorySummaryAdapter.java:44: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged();
+        ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\debt\DebtDetailsFragment.java:289: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+            notifyDataSetChanged();
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\expense\ExpenseDetailsFragment.java:142: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+                mAdapter.notifyDataSetChanged();
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\expense\ExpenseDetailsFragment.java:151: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+                mAdapter.notifyDataSetChanged();
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\income\IncomeDetailsFragment.java:279: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+            notifyDataSetChanged();
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\settings\SettingsActivity.java:819: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+            notifyDataSetChanged();
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\TransactionAdapter.java:68: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged();
+        ~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NotifyDataSetChanged":
+   The RecyclerView adapter's onNotifyDataSetChanged method does not specify
+   what about the data set has changed, forcing any observers to assume that
+   all existing items and structure may no longer be valid. `LayoutManager`s
+   will be forced to fully rebind and relayout all visible views.
+
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\MainActivity.java:202: Warning: Unnecessary;` Build.VERSION.SDK_INT >= 33` is never true here [ObsoleteSdkInt]
+        else if (Build.VERSION.SDK_INT >= 33) { // Build.VERSION_CODES.TIRAMISU
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\settings\SettingsActivity.java:199: Warning: Unnecessary;` android.os.Build.VERSION.SDK_INT >= 33` is never true here [ObsoleteSdkInt]
+        else if (android.os.Build.VERSION.SDK_INT >= 33) { // Build.VERSION_CODES.TIRAMISU
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+D:\Desktop\jizhang1\app\src\main\res\layout\item_category.xml:11: Warning: This tag and its children can be replaced by one <TextView/> and a compound drawable [UseCompoundDrawables]
+    <LinearLayout
+     ~~~~~~~~~~~~
+
+   Explanation for issues of type "UseCompoundDrawables":
+   A LinearLayout which contains an ImageView and a TextView can be more
+   efficiently handled as a compound drawable (a single TextView, using the
+   drawableTop, drawableLeft, drawableRight and/or drawableBottom attributes
+   to draw one or more images adjacent to the text).
+
+   If the two widgets are offset from each other with margins, this can be
+   replaced with a drawablePadding attribute.
+
+   There's a lint quickfix to perform this conversion in the Eclipse plugin.
+
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:57: Warning: Set android:baselineAligned="false" on this element for better performance [DisableBaselineAlignment]
+            <LinearLayout
+             ~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:82: Warning: Set android:baselineAligned="false" on this element for better performance [DisableBaselineAlignment]
+                    <LinearLayout
+                     ~~~~~~~~~~~~
+
+   Explanation for issues of type "DisableBaselineAlignment":
+   When a LinearLayout is used to distribute the space proportionally between
+   nested layouts, the baseline alignment property should be turned off to
+   make the layout computation faster.
+
+D:\Desktop\jizhang1\app\src\main\res\values\arrays.xml:3: Warning: The resource R.array.pie_colors appears to be unused [UnusedResources]
+    <array name="pie_colors">
+           ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\colors.xml:11: Warning: The resource R.color.gray appears to be unused [UnusedResources]
+    <color name="gray">#9E9E9E</color>
+           ~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\colors.xml:13: Warning: The resource R.color.dark_gray appears to be unused [UnusedResources]
+    <color name="dark_gray">#616161</color>
+           ~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\colors.xml:15: Warning: The resource R.color.card_background appears to be unused [UnusedResources]
+    <color name="card_background">#FFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\drawable\ic_launcher_background.xml:2: Warning: The resource R.drawable.ic_launcher_background appears to be unused [UnusedResources]
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+^
+D:\Desktop\jizhang1\app\src\main\res\drawable\ic_launcher_foreground.xml:2: Warning: The resource R.drawable.ic_launcher_foreground appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+D:\Desktop\jizhang1\app\src\main\res\layout\item_category_edit.xml:2: Warning: The resource R.layout.item_category_edit appears to be unused [UnusedResources]
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+^
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:4: Warning: The resource R.string.income appears to be unused [UnusedResources]
+    <string name="income">收入</string>
+            ~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:5: Warning: The resource R.string.expense appears to be unused [UnusedResources]
+    <string name="expense">支出</string>
+            ~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:15: Warning: The resource R.string.cancel appears to be unused [UnusedResources]
+    <string name="cancel">取消</string>
+            ~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:16: Warning: The resource R.string.delete appears to be unused [UnusedResources]
+    <string name="delete">删除</string>
+            ~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:17: Warning: The resource R.string.edit appears to be unused [UnusedResources]
+    <string name="edit">编辑</string>
+            ~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:27: Warning: The resource R.string.currency appears to be unused [UnusedResources]
+    <string name="currency">货币</string>
+            ~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:28: Warning: The resource R.string.theme appears to be unused [UnusedResources]
+    <string name="theme">主题</string>
+            ~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:30: Warning: The resource R.string.light_mode appears to be unused [UnusedResources]
+    <string name="light_mode">明亮模式</string>
+            ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:31: Warning: The resource R.string.system_default appears to be unused [UnusedResources]
+    <string name="system_default">系统默认</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:32: Warning: The resource R.string.description appears to be unused [UnusedResources]
+    <string name="description">描述</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:33: Warning: The resource R.string.select_date appears to be unused [UnusedResources]
+    <string name="select_date">选择日期</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:40: Warning: The resource R.string.home appears to be unused [UnusedResources]
+    <string name="home">首页</string>
+            ~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:46: Warning: The resource R.string.manage_categories appears to be unused [UnusedResources]
+    <string name="manage_categories">管理类别</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:10: Warning: The resource R.style.TextAppearance_AppTitle appears to be unused [UnusedResources]
+    <style name="TextAppearance.AppTitle" parent="TextAppearance.MaterialComponents.Headline6">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:16: Warning: The resource R.style.TextAppearance_AppSubtitle appears to be unused [UnusedResources]
+    <style name="TextAppearance.AppSubtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:21: Warning: The resource R.style.TextAppearance_Amount appears to be unused [UnusedResources]
+    <style name="TextAppearance.Amount" parent="TextAppearance.MaterialComponents.Body1">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:26: Warning: The resource R.style.Widget_AppBar appears to be unused [UnusedResources]
+    <style name="Widget.AppBar" parent="Widget.MaterialComponents.Toolbar.Primary">
+           ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:30: Warning: The resource R.style.Widget_Button_Primary appears to be unused [UnusedResources]
+    <style name="Widget.Button.Primary" parent="Widget.MaterialComponents.Button">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\values\styles.xml:40: Warning: The resource R.style.Widget_Card appears to be unused [UnusedResources]
+    <style name="Widget.Card" parent="Widget.MaterialComponents.CardView">
+           ~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+D:\Desktop\jizhang1\app\src\main\res\values\strings.xml:69: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="creating_template">正在创建模板文件...</string>
+                                     ~~~~~~~~~~~
+
+   Explanation for issues of type "TypographyEllipsis":
+   You can replace the string "..." with a dedicated ellipsis character,
+   ellipsis character (u2026, &#8230;). This can help make the text more
+   readable.
+
+   https://en.wikipedia.org/wiki/Ellipsis
+
+D:\Desktop\jizhang1\app\src\main\res\mipmap-hdpi\ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-mdpi\ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xhdpi\ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxhdpi\ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png: Warning: Launcher icons should not fill every pixel of their square region; see the design guide for details [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-hdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-mdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://material.io/design/iconography/) your launcher icons should "use a
+   distinct silhouette", a "three-dimensional, front view, with a slight
+   perspective as if viewed from above, so that users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png: Warning: The image ic_launcher.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher.png: 683x683 dp (1024x1024 px), mipmap-mdpiic_launcher.png: 1024x1024 dp (1024x1024 px), mipmap-xhdpiic_launcher.png: 512x512 dp (1024x1024 px), mipmap-xxhdpiic_launcher.png: 341x341 dp (1024x1024 px), mipmap-xxxhdpiic_launcher.png: 256x256 dp (1024x1024 px) [IconDipSize]
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png: Warning: The image ic_launcher_round.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher_round.png: 683x683 dp (1024x1024 px), mipmap-mdpiic_launcher_round.png: 1024x1024 dp (1024x1024 px), mipmap-xhdpiic_launcher_round.png: 512x512 dp (1024x1024 px), mipmap-xxhdpiic_launcher_round.png: 341x341 dp (1024x1024 px), mipmap-xxxhdpiic_launcher_round.png: 256x256 dp (1024x1024 px) [IconDipSize]
+
+   Explanation for issues of type "IconDipSize":
+   Checks the all icons which are provided in multiple densities, all compute
+   to roughly the same density-independent pixel (dip) size. This catches
+   errors where images are either placed in the wrong folder, or icons are
+   changed to new sizes but some folders are forgotten.
+
+D:\Desktop\jizhang1\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_round.png [IconDuplicates]
+
+   Explanation for issues of type "IconDuplicates":
+   If an icon is repeated under different names, you can consolidate and just
+   use one of the icons and delete the others to make your application
+   smaller. However, duplicated icons usually are not intentional and can
+   sometimes point to icons that were accidentally overwritten or accidentally
+   not updated.
+
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_settings.xml:96: Warning: Missing autofillHints attribute [Autofill]
+                        <EditText
+                         ~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_settings.xml:153: Warning: Missing autofillHints attribute [Autofill]
+                        <EditText
+                         ~~~~~~~~
+
+   Explanation for issues of type "Autofill":
+   Specify an autofillHints attribute when targeting SDK version 26 or higher
+   or explicitly specify that the view is not important for autofill. Your app
+   can help an autofill service classify the data correctly by providing the
+   meaning of each view that could be autofillable, such as views representing
+   usernames, passwords, credit card fields, email addresses, etc.
+
+   The hints can have any value, but it is recommended to use predefined
+   values like 'username' for a username or 'creditCardNumber' for a credit
+   card number. For a list of all predefined autofill hint constants, see the
+   AUTOFILL_HINT_ constants in the View reference at
+   https://developer.android.com/reference/android/view/View.html.
+
+   You can mark a view unimportant for autofill by specifying an
+   importantForAutofill attribute on that view or a parent view. See
+   https://developer.android.com/reference/android/view/View.html#setImportant
+   ForAutofill(int).
+
+   https://developer.android.com/guide/topics/text/autofill.html
+
+D:\Desktop\jizhang1\app\src\main\java\com\example\jizhang\ui\stats\CategorySummaryAdapter.java:60: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        holder.amountTextView.setText("¥" + DECIMAL_FORMAT.format(summary.getAmount()));
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:35: Warning: Hardcoded string "负债类型", should use @string resource [HardcodedText]
+                android:text="负债类型"
+                ~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:49: Warning: Hardcoded string "金额", should use @string resource [HardcodedText]
+                android:hint="金额">
+                ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:62: Warning: Hardcoded string "日期", should use @string resource [HardcodedText]
+                android:hint="日期">
+                ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:76: Warning: Hardcoded string "类别", should use @string resource [HardcodedText]
+                android:text="类别"
+                ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:91: Warning: Hardcoded string "备注", should use @string resource [HardcodedText]
+                android:hint="备注">
+                ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:105: Warning: Hardcoded string "支付平台交易单号", should use @string resource [HardcodedText]
+                android:hint="支付平台交易单号">
+                ~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt.xml:121: Warning: Hardcoded string "保存", should use @string resource [HardcodedText]
+        android:text="保存" />
+        ~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_debt_repayment.xml:122: Warning: Hardcoded string "支付平台交易单号（选填）", should use @string resource [HardcodedText]
+                android:hint="支付平台交易单号（选填）"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_expense.xml:103: Warning: Hardcoded string "支付平台交易单号（选填）", should use @string resource [HardcodedText]
+                android:hint="支付平台交易单号（选填）"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_add_income.xml:103: Warning: Hardcoded string "支付平台交易单号（选填）", should use @string resource [HardcodedText]
+                android:hint="支付平台交易单号（选填）"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:45: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                android:text="¥0.00"
+                ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:80: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                        android:text="¥0.00"
+                        ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:104: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                        android:text="¥0.00"
+                        ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:119: Warning: Hardcoded string "总负债", should use @string resource [HardcodedText]
+                        android:text="总负债"
+                        ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:128: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                        android:text="¥0.00"
+                        ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_main.xml:177: Warning: Hardcoded string "添加负债", should use @string resource [HardcodedText]
+        android:contentDescription="添加负债"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:77: Warning: Hardcoded string "收支总览", should use @string resource [HardcodedText]
+                        android:text="收支总览"
+                        ~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:106: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                                android:text="¥0.00"
+                                ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:130: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                                android:text="¥0.00"
+                                ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:154: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                                android:text="¥0.00"
+                                ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:182: Warning: Hardcoded string "收支趋势", should use @string resource [HardcodedText]
+                        android:text="收支趋势"
+                        ~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:214: Warning: Hardcoded string "收入类别占比", should use @string resource [HardcodedText]
+                        android:text="收入类别占比"
+                        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:246: Warning: Hardcoded string "支出类别占比", should use @string resource [HardcodedText]
+                        android:text="支出类别占比"
+                        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\activity_stats.xml:278: Warning: Hardcoded string "类别明细", should use @string resource [HardcodedText]
+                        android:text="类别明细"
+                        ~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:17: Warning: Hardcoded string "类型:", should use @string resource [HardcodedText]
+            android:text="类型:"
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:36: Warning: Hardcoded string "金额:", should use @string resource [HardcodedText]
+            android:text="金额:"
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:57: Warning: Hardcoded string "类别:", should use @string resource [HardcodedText]
+            android:text="类别:"
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:76: Warning: Hardcoded string "日期:", should use @string resource [HardcodedText]
+            android:text="日期:"
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:95: Warning: Hardcoded string "描述:", should use @string resource [HardcodedText]
+            android:text="描述:"
+            ~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\dialog_transaction_details.xml:113: Warning: Hardcoded string "交易单号:", should use @string resource [HardcodedText]
+            android:text="交易单号:"
+            ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_debt_details.xml:35: Warning: Hardcoded string "¥0.00", should use @string resource [HardcodedText]
+                android:text="¥0.00"
+                ~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_debt_details.xml:52: Warning: Hardcoded string "暂无负债记录", should use @string resource [HardcodedText]
+        android:text="暂无负债记录"
+        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_expense_details.xml:58: Warning: Hardcoded string "本月支出类别占比", should use @string resource [HardcodedText]
+                        android:text="本月支出类别占比"
+                        ~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_expense_details.xml:73: Warning: Hardcoded string "支出类别饼图", should use @string resource [HardcodedText]
+                            android:text="支出类别饼图"
+                            ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_expense_details.xml:88: Warning: Hardcoded string "近期支出记录", should use @string resource [HardcodedText]
+        android:text="近期支出记录"
+        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_expense_details.xml:109: Warning: Hardcoded string "暂无支出记录", should use @string resource [HardcodedText]
+        android:text="暂无支出记录"
+        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_income_details.xml:58: Warning: Hardcoded string "本月收入类别占比", should use @string resource [HardcodedText]
+                        android:text="本月收入类别占比"
+                        ~~~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_income_details.xml:73: Warning: Hardcoded string "收入类别饼图", should use @string resource [HardcodedText]
+                            android:text="收入类别饼图"
+                            ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_income_details.xml:88: Warning: Hardcoded string "近期收入记录", should use @string resource [HardcodedText]
+        android:text="近期收入记录"
+        ~~~~~~~~~~~~~~~~~~~~~
+D:\Desktop\jizhang1\app\src\main\res\layout\fragment_income_details.xml:109: Warning: Hardcoded string "暂无收入记录", should use @string resource [HardcodedText]
+        android:text="暂无收入记录"
+        ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 105 warnings

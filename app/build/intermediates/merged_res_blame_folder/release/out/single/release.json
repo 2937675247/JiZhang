@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_dialog_transaction_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/dialog_transaction_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_add_income.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_add_income.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_debt_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_debt_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_item_category_edit.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/item_category_edit.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_item_category.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/item_category.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_main.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_add_debt.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_add_debt.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_item_transaction.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/item_transaction.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_fragment_income_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/fragment_income_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_expense_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_expense_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_fragment_debt_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/fragment_debt_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/drawable_ic_delete_white_24dp.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/drawable/ic_delete_white_24dp.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_fragment_expense_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/fragment_expense_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/xml_file_paths.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_add_debt_repayment.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_add_debt_repayment.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_stats.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_stats.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_settings.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_add_expense.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_add_expense.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_item_category_summary.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/item_category_summary.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/layout_activity_income_details.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/layout/activity_income_details.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/menu_main_menu.xml.flat",
+        "source": "com.example.jizhang.app-main-47:/menu/main_menu.xml"
+    },
+    {
+        "merged": "com.example.jizhang.app-merged_res-46:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.jizhang.app-main-47:/mipmap-hdpi/ic_launcher.png"
+    }
+]
